@@ -12,7 +12,28 @@
 <body>
 	<div id="block">
 		<div class='notes'> 
-			<div></div>
+			<div class="headNote">Notes</div>
+			<div class="myNotes">
+				<div class="addNote">
+					<h3>Add note</h3>
+					<button>+</button>
+				</div>
+				<div class="input_div">
+					<label for="notedate">Date</label>
+					<input type="text" name="date" id="notedate">
+					<label for="notetext">Note</label>
+					<input type="text" name="note" id="notetext">
+					<div class="color_and_but">
+						<div>
+							<label for="color">Color</label>
+							<input type="color" name="color" id="color">
+						</div>
+						<div>
+							<button id="add">ADD</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<script>
@@ -78,7 +99,7 @@
 			for (let i = 0; i < 6; i++) {
 				let tr2 = document.createElement('tr')
 				if (i == 0) {
-					tr2.style.boxShadow = 'inset 0px 12px 15px -10px'
+					tr2.style.boxShadow = 'inset 0px 12px 10px -10px'
 					tr2.id = 'firstrow'
 				}
 				if (i == 1) {
@@ -158,6 +179,9 @@
 				document.querySelector('#lastrow').remove()
 			}
 		}
+		function open_input(){
+
+		}
 		createStandart()
 		drowCalendarNumbers()
 
@@ -168,6 +192,12 @@
 		buttonUp.addEventListener('click', calendarUp)
 		let buttonDown = document.getElementById('downCal')
 		buttonDown.addEventListener('click', calendarDown)
+
+		let addnotebut = document.querySelector('.addNote button');
+		addnotebut.addEventListener('click', open_input)
+		let note_date = document.getElementById('notedate')
+		let buttonAdd = document.getElementById('add')
+		console.log(buttonAdd)
 	</script>
 </body>
 

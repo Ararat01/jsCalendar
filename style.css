@@ -12,17 +12,23 @@ body {
 	width: 90%;
 	margin: 0px auto;	
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	justify-content: space-between;
 }
 .notes {
 	height: 700px;
-	padding-top: 100px;	
 	width: 50%;
-	display: none
+	width: 600px;
+	margin-right: 40px;
 }
-.notes div {
-
+.notes .headNote {
+	height: 100px;
+	background-color: #ff6563;
+	font-weight: 700;
+	color: white;
+	font-size: 80px;
+	font-family: 'Gwendolyn';
+}
+.notes .myNotes {
 	height: 600px;
 	background-color: white;
 }
@@ -60,4 +66,69 @@ body {
 	color: white;
 	font-family: 'Padauk';
 	font-weight: 300;
+}
+.addNote {
+	height: 100px; 
+	background-color: #404040;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0px 25px;
+}
+.addNote h3 {
+	margin: 0;
+	font-size: 30px;
+	color: white;
+	font-family: 'Padauk';
+	font-weight: 400;
+	text-transform: uppercase;
+}
+.addNote button {
+	border: 1px solid white;
+	background-color: transparent;
+	color: white;
+	font-size: 30px;
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+	transition: 0.5s;
+}
+.addNote button:hover {
+	background-color: white;
+	color: #404040;
+	transform: scale(1.2);
+}
+.input_div {
+	padding: 25px;
+}
+.input_div #notedate, .input_div #notetext {
+	padding: 10px;
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin: 10px 0;
+	width: 100%;
+	display: block;
+}
+.input_div label {
+	display: block;
+	margin-bottom: 10px;
+	font-size: 20px;
+	font-family: 'Prompt';
+}
+.color_and_but {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+#add {
+	font-family: 'Padauk';
+	font-size: 20px;
+	padding: 5px 25px;
+	background-color: #404040;
+	border: 1px solid #404040;
+	color: white;
+	cursor: pointer;
+}
+#add:hover {
+	background-color: transparent;
 }
