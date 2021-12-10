@@ -91,15 +91,21 @@ body {
 	height: 40px;
 	width: 40px;
 	cursor: pointer;
-	transition: 0.5s;
+	transition: all ease 0.5s;
 }
 .addNote button:hover {
 	background-color: white;
 	color: #404040;
-	transform: scale(1.2);
+	transform: scale(1.1);
+}
+.addNote button:active {
+	transform: scale(0.9);
 }
 .input_div {
 	padding: 25px;
+}
+.d-none {
+	display: none;
 }
 .input_div #notedate, .input_div #notetext {
 	padding: 10px;
@@ -128,7 +134,9 @@ body {
 	border: 1px solid #404040;
 	color: white;
 	cursor: pointer;
+	transition: .5s;
 }
 #add:hover {
 	background-color: transparent;
+	color: #404040;
 }

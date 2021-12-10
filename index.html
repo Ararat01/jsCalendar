@@ -18,7 +18,7 @@
 					<h3>Add note</h3>
 					<button>+</button>
 				</div>
-				<div class="input_div">
+				<div class="input_div d-none">
 					<label for="notedate">Date</label>
 					<input type="text" name="date" id="notedate">
 					<label for="notetext">Note</label>
@@ -37,6 +37,9 @@
 		</div>
 	</div>
 	<script>
+		let myNotesObj = {
+			length: 0,
+		};
 		let month = new Date().getMonth() + 1
 		let year = new Date().getFullYear()
 		let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -80,6 +83,8 @@
 				table.appendChild(tr)
 				th.id = `day${i}`
 			}
+			butUp.addEventListener('click', calendarUp)
+			butDown.addEventListener('click', calendarDown)		
 		}
 		function drowCalendarNumbers() {
 			th1.appendChild(document.createTextNode(months[month-1] + ` ${year}`))
@@ -111,11 +116,22 @@
 				for (let j = 0; j < 7; j++) {
 					let th = document.createElement('th');
 					if (k == st) {
-						if(day == num && year == new Date().getFullYear() && month == new Date().getMonth() + 1) {
+						if(day == num && month == new Date().getMonth() + 1 && year == new Date().getFullYear()) {
 							th.style.borderRadius = '50%';
 							th.style.backgroundColor = '#ff7750';
-							th.style.color = 'white';
-							
+							th.style.color = 'white';						
+						}
+						if(myNotesObj.length >= 1) {
+							for(let z = 0; z < myNotesObj.length; z++) {
+								console.log(true)
+								let date = myNotesObj[`date${z}`].split('-')
+								if(num == date[0] &&  month == date[1] && year == date[2]) {
+									th.style.color = myNotesObj[`color${z}`];
+									th.style.textDecoration = 'underline'
+								}
+							}
+							// th.style.textDecoration = 'underline';
+							// th.style.color = 'black';
 						}
 						if (num != d + 1) {
 							th.appendChild(document.createTextNode(num))
@@ -130,8 +146,8 @@
 				table.appendChild(tr2)
 			}
 		}
-		
 		function calendarUp() {
+			console.log(true)
 			th1.innerHTML = '';
 			table.innerHTML = '';
 			if (month == 1) {
@@ -180,7 +196,32 @@
 			}
 		}
 		function open_input(){
+			document.querySelector('.input_div').classList.toggle('d-none')
+		}
+		function addNewNote() {
+			let date = document.getElementById('notedate')
+			let text = document.getElementById('notetext')
+			let color = document.getElementById('color')
+			if(validator(date.value)) {
+				if (Object.values(myNotesObj).indexOf(date.value) == -1) {
+					myNotesObj[`date${myNotesObj.length}`] = date.value;
+					myNotesObj[`color${myNotesObj.length}`] = color.value;
+					myNotesObj.length += 1
+					th1.innerHTML = '';
+					table.innerHTML = '';
+					createStandart()
+					drowCalendarNumbers(date.value, color.value)
+					checker()
+				}
+			}
+			else {
+				console.log(date.value + ' is not valid')
+			}
 
+		}
+		function validator(text) {
+			let regex = /^(([3][0-1])|([1-2][0-9])|([0][1-9]))\-(([0][1-9])|([1][0-2]))\-([0-9]{4})$/gm
+			return regex.test(text)
 		}
 		createStandart()
 		drowCalendarNumbers()
@@ -195,9 +236,8 @@
 
 		let addnotebut = document.querySelector('.addNote button');
 		addnotebut.addEventListener('click', open_input)
-		let note_date = document.getElementById('notedate')
 		let buttonAdd = document.getElementById('add')
-		console.log(buttonAdd)
+		buttonAdd.addEventListener('click', addNewNote)
 	</script>
 </body>
 
