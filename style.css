@@ -17,7 +17,6 @@ body {
 .notes {
 	height: 700px;
 	width: 50%;
-	width: 600px;
 	margin-right: 40px;
 }
 .notes .headNote {
@@ -139,4 +138,17 @@ body {
 #add:hover {
 	background-color: transparent;
 	color: #404040;
+}
+.notesView {
+	padding: 15px;
+}
+.notesView h2 {
+	font-family: 'Padauk';
+	font-size: 30px;
+	margin: 0;
+}
+.notesView p {
+	font-family: 'Padauk';
+	font-size: 25px;
+	margin: 0;
 }
